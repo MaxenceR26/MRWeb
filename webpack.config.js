@@ -8,8 +8,10 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 
 Encore
 
-    // Enable PostCSS Loader
+
+    // Enable PostCSS Loader / React
     .enablePostCssLoader()
+    .enableReactPreset()
     // directory where compiled assets will be stored
     .setOutputPath('public/build/')
     // public path used by the web server to access the output path
@@ -23,7 +25,8 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
-    .addEntry('app', './assets/app.js')
+    .addEntry('react/index', './assets/react/index.js')
+    .addEntry('app', './assets/styles/app.css')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -56,11 +59,11 @@ Encore
     //     config.plugins.push('@babel/a-babel-plugin');
     // })
 
-    // enables and configure @babel/preset-env polyfills
-    .configureBabelPresetEnv((config) => {
-        config.useBuiltIns = 'usage';
-        config.corejs = '3.38';
-    })
+    // // enables and configure @babel/preset-env polyfills
+    // .configureBabelPresetEnv((config) => {
+    //     config.useBuiltIns = 'usage';
+    //     config.corejs = '3.38';
+    // })
 
     // enables Sass/SCSS support
     //.enableSassLoader()
